@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8" />
+<title>Listing Players - baseball</title>
+<link rel="stylesheet" href="/css/bootstrap.css" />
+<script src="/js/jquery.js"></script>
+<script src="/js/bootstrap.js"></script>
+</head>
+<body>
+	<div class="container">
+		<h1>Listing Players</h1>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>日付</th>
+					<th>場所</th>
+					<th>備考</th>
+					<th></th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				<th:block th:with="live=${liveList}">
+				<tr th:each="liveList : ${live}">
+					<td th:text="*{liveList.dateId}"></td>
+					<td th:text="*{liveList.place}"></td>
+					<td th:text="*{liveList.remarks}"></td>
+					<td><a class="btn btn-default btn-xs"
+						th:href="@{/liveList/{dateId}(dateId=*{liveList.dateId})}">参照</a></td>
+					<td><a class="btn btn-default btn-xs"
+						th:href="@{/liveList/{dateId}/edit(dateId=*{liveList.dateId})}">編集</a></td>
+					<td>
+						<!-- ⑤ -->
+						<form th:action="@{/liveList/{dateId}(dateId=*{liveList.dateId})}" th:method="delete">
+							<input class="btn btn-default btn-xs" type="submit" value="削除" />
+						</form>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<a class="btn btn-default" href="liveList/new">新規作成</a>
+	</div>
+</body>
+</html>
