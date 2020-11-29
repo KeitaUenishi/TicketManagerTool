@@ -6,12 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import product.domain.LiveList;
@@ -65,7 +63,7 @@ public class LiveListController {
 	}
 
 	// 参照画面の表示
-	@GetMapping("{id}")
+	@GetMapping("{dateId}")
 	public String show(@PathVariable Long dateId, Model model) {
 		LiveList liveList = liveListService.findOne(dateId);
 		model.addAttribute("liveList", liveList);
@@ -73,14 +71,14 @@ public class LiveListController {
 	}
 
 	// データの保存
-	@PutMapping
+	@PostMapping
 	public String create(@ModelAttribute LiveList liveList) {
 		liveListService.insert(liveList);
 		return "redirect:/liveList";
 	}
 
 	// データの更新
-	@DeleteMapping("/update/{id}")
+	@GetMapping("/update/{dateId}")
 	@Transactional(readOnly = false)
 	public String update(@PathVariable Long dateId, @ModelAttribute LiveList liveList) {
 		liveList.setDateId(dateId);
@@ -89,7 +87,7 @@ public class LiveListController {
 	}
 
 	// データの削除
-	@PostMapping("delete/{id}")
+	@PostMapping("/{dateId}")
 	public String delete(@PathVariable Long dateId) {
 		liveListService.delete(dateId);
 		return "redirect:/liveList";

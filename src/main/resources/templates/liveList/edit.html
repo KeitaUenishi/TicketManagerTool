@@ -10,7 +10,7 @@
 <body>
 	<div class="container">
 		<h1>Editing Player</h1>
-		<form th:action="@{/liveList/{dateId}(dateId=*{dateId})}" th:method="put"
+		<form th:action="@{/liveList/{dateId}(dateId=*{dateId})}" th:method="get"
 			th:object="${liveList}">
 			<div class="form-group">
 				<label class="control-label">日付</label>
