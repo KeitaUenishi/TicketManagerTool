@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="product.mapper.LiveListMapper">
+
+	<select id="findAll" resultType="product.domain.LiveList">
+		SELECT * FROM live_list
+	</select>
+	<select id="findOne" resultType="product.domain.LiveList">
+		SELECT * FROM live_list WHERE dateId = #{dateId}
+	</select>
+	<insert id="insert">
+		INSERT INTO live_list VALUES (#{dateId}, #{place}, #{remarks})
+	</insert>
+	<update id="update">
+		UPDATE live_list SET dateId = #{dateId}, place = #{place}, remarks = #{remarks} WHERE dateId = #{dateId}
+	</update>
+	<delete id="delete">
+		DELETE FROM live_list WHERE dateId = #{dateId}
+	</delete>
+</mapper>
