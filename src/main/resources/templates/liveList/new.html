@@ -2,17 +2,17 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="utf-8" />
-<title>New LiveList</title>
+<title>新規登録ページ</title>
 <link rel="stylesheet" href="/css/bootstrap.css" />
 <script src="/js/jquery.js"></script>
 <script src="/js/bootstrap.js"></script>
 </head>
 <body>
 	<div class="container">
-		<h1>New Player</h1>
+		<h1>Liveを新規登録</h1>
 		<form th:action="@{/liveList}" th:method="post">
 			<div class="form-group">
-				<label class="control-label">日付</label> <input class="form-control"
+				<label class="control-label">日付</label> <input class="form-control" placeholder="20181101"
 					type="number" name="dateId" />
 			</div>
 			<div class="form-group">
@@ -21,9 +21,9 @@
 			</div>
 			<div class="form-group">
 				<label class="control-label">備考</label> <input
-					class="form-control" type="text" name="team" />
+					class="form-control" type="text" name="remarks" />
 			</div>
-			<button class="btn btn-default" type="submit">登録</button>
+			<button class="btn btn-Primary" type="submit">登録</button>
 		</form>
 		<div class="pull-right">
 			<a class="btn btn-link" href="/liveList">一覧画面へ</a>
