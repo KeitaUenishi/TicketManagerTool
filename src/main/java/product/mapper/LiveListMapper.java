@@ -4,18 +4,33 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import product.domain.CustomerList;
 import product.domain.LiveList;
 
 @Mapper
 public interface LiveListMapper {
 
-	List<LiveList> findAll();
+	List<LiveList> liveFindAll();
 
-	LiveList findOne(Long dateId);
+	LiveList liveFindOne(Long dateId);
 
-	void insert(LiveList liveList);
+	void liveInsert(LiveList liveList);
 
-	void update(LiveList liveList);
+	void liveUpdate(LiveList liveList);
 
-	void delete(Long dateId);
+	void liveDelete(Long dateId);
+
+	List<CustomerList> customerFindAll();
+
+	// JOIN
+	public LiveList selectLiveList(Long dateId);
+
+	CustomerList customerFindOne(Long id);
+
+	void customerInsert(CustomerList customerList);
+
+	void liveUpdate(CustomerList customerList);
+
+	void customerDelete(Long id);
+
 }

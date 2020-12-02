@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import product.domain.CustomerList;
 import product.domain.LiveList;
 import product.service.LiveListService;
 
@@ -65,8 +66,12 @@ public class LiveListController {
 	// 参照画面の表示
 	@GetMapping("{dateId}")
 	public String show(@PathVariable Long dateId, Model model) {
-		LiveList liveList = liveListService.findOne(dateId);
-		model.addAttribute("liveList", liveList);
+		LiveList liveListChoise = liveListService.selectLiveList(dateId);
+		List<CustomerList> customerLists = liveListChoise.getCustomers();
+		model.addAttribute("customerLists", customerLists);
+
+		//		LiveList liveList = liveListService.findOne(dateId);
+		//		model.addAttribute("liveList", liveList);
 		return "liveList/show";
 	}
 

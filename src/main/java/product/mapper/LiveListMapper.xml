@@ -2,19 +2,68 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="product.mapper.LiveListMapper">
 
-	<select id="findAll" resultType="product.domain.LiveList">
+	<select id="selectLiveList" resultMap="liveListMap">
+		SELECT
+			live_list.dateId,
+			live_list.place,
+			live_list.remarks,
+			customers_list.id,
+			customers_list.name,
+			customers_list.number,
+			customers_list.remarks
+		FROM
+			live_list
+		INNER JOIN
+			customers_list
+		ON
+			live_list.dateId = customers_list.dateId
+		WHERE
+			live_list.dateId = #{id}
+	</select>
+
+	<!-- テーブルのSELECT結果をどのようにマッピングするか指定 -->
+	<resultMap id="liveListMap" type="product.domain.LiveList">
+		<id property="dateId" column="dateId"/>
+		<result property="place" column="place"/>
+			<collection property="customers" ofType="product.domain.CustomerList">
+				<result property="id" column="id"/>
+				<result property="dateId" column="dateId"/>
+				<result property="name" column="name"/>
+				<result property="number" column="number"/>
+				<result property="remarks" column="remarks"/>
+			</collection>
+	</resultMap>
+
+	<select id="liveFindAll" resultType="product.domain.LiveList">
 		SELECT * FROM live_list
 	</select>
-	<select id="findOne" resultType="product.domain.LiveList">
+	<select id="liveFindOne" resultType="product.domain.LiveList">
 		SELECT * FROM live_list WHERE dateId = #{dateId}
 	</select>
-	<insert id="insert">
+	<insert id="liveInsert">
 		INSERT INTO live_list VALUES (#{dateId}, #{place}, #{remarks})
 	</insert>
-	<update id="update">
+	<update id="liveUpdate">
 		UPDATE live_list SET dateId = #{dateId}, place = #{place}, remarks = #{remarks} WHERE dateId = #{dateId}
 	</update>
-	<delete id="delete">
+	<delete id="liveDelete">
 		DELETE FROM live_list WHERE dateId = #{dateId}
 	</delete>
+
+	<select id="customerFindAll" resultType="product.domain.CustomerList">
+		SELECT * FROM customers_list
+	</select>
+	<select id="customerFindOne" resultType="product.domain.CustomerList">
+		SELECT * FROM customers_list WHERE id = #{id}
+	</select>
+	<insert id="customerInsert">
+		INSERT INTO customers_list VALUES (#{name}, #{number}, #{remarks})
+	</insert>
+	<update id="customerUpdate">
+		UPDATE customers_list SET name = #{name}, number = #{number}, remarks = #{remarks} WHERE id = #{id}
+	</update>
+	<delete id="customerDelete">
+		DELETE FROM customers_list WHERE id = #{id}
+	</delete>
+
 </mapper>

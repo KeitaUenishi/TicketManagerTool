@@ -1,14 +1,17 @@
 package product.domain;
 
-import java.util.List;
-
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
 import lombok.Data;
 
 @Data
-public class LiveList {
+public class CustomerList {
+
+	/** ID */
+	@NotBlank
+	@Size(min = 1, max = 10)
+	private Long id;
 
 	/** 日付ID */
 	@NotBlank
@@ -17,13 +20,15 @@ public class LiveList {
 
 	/** 会場 */
 	@NotBlank
-	@Size(min = 1, max = 32)
-	private String place;
+	@Size(min = 1, max = 50)
+	private String name;
+
+	/** 枚数 */
+	@NotBlank
+	@Size(min = 1, max = 5)
+	private int number;
 
 	/** 備考 */
 	private String remarks;
-
-	/** 子クラス（来場客リスト）の要素定義 */
-	private List<CustomerList> customers;
 
 }

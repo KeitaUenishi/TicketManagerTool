@@ -10,20 +10,15 @@
 <body>
 	<div class="container">
 		<h1>Show Live</h1>
-		<div th:object="${liveList}">
-			<div>
-				<label>日付</label>
-				<p th:text="*{dateId}"></p>
-			</div>
-			<div>
-				<label>場所</label>
-				<p th:text="*{place}"></p>
-			</div>
-			<div>
-				<label>備考</label>
-				<p th:text="*{remarks}"></p>
-			</div>
-		</div>
+		<tr th:each="custumer : ${customerLists}">
+					<td th:text="*{custumer.id}"></td>
+					<td th:text="*{custumer.dateId}"></td>
+					<td th:text="*{custumer.name}"></td>
+					<td th:text="*{custumer.number}"></td>
+					<td th:text="*{custumer.remarks}"></td>
+		</tr>
+
+
 		<div>
 			<a class="btn btn-default" th:href="@{/liveList/{dateId}/edit(dateId=*{dateId})}">編集</a>
 		</div>

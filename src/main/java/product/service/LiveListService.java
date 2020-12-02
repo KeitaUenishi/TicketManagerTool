@@ -17,26 +17,31 @@ public class LiveListService {
 
 	@Transactional(readOnly = true)
 	public List<LiveList> findAll() {
-		return liveListMapper.findAll();
+		return liveListMapper.liveFindAll();
 	}
 
 	@Transactional
 	public LiveList findOne(Long dateId) {
-		return liveListMapper.findOne(dateId);
+		return liveListMapper.liveFindOne(dateId);
 	}
 
 	@Transactional
 	public void insert(LiveList liveList) {
-		liveListMapper.insert(liveList);
+		liveListMapper.liveInsert(liveList);
 	}
 
 	@Transactional
 	public void update(LiveList liveList) {
-		liveListMapper.update(liveList);
+		liveListMapper.liveUpdate(liveList);
 	}
 
 	@Transactional
 	public void delete(Long dateId) {
-		liveListMapper.delete(dateId);
+		liveListMapper.liveDelete(dateId);
+	}
+
+	// JOINテスト
+	public LiveList selectLiveList(Long dateId) {
+		return liveListMapper.selectLiveList(dateId);
 	}
 }
