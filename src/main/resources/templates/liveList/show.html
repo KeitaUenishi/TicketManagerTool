@@ -10,19 +10,56 @@
 <body>
 	<div class="container">
 		<h1>Show Live</h1>
-		<tr th:each="custumer : ${customerLists}">
-					<td th:text="*{custumer.id}"></td>
-					<td th:text="*{custumer.dateId}"></td>
-					<td th:text="*{custumer.name}"></td>
-					<td th:text="*{custumer.number}"></td>
-					<td th:text="*{custumer.remarks}"></td>
-		</tr>
 
+		<div th:object="${liveList}">
 
-		<div>
-			<a class="btn btn-default" th:href="@{/liveList/{dateId}/edit(dateId=*{dateId})}">編集</a>
+			<div>
+				<label>日付</label>
+				<p th:text="*{dateId}"></p>
+			</div>
+			<div>
+				<label>場所</label>
+				<p th:text="*{place}"></p>
+			</div>
+			<div>
+				<label>備考</label>
+				<p th:text="*{remarks}"></p>
+			</div>
 		</div>
+		<div>
+			<a class="btn btn btn-secondary" th:href="@{/liveList/{dateId}/edit(dateId=*{dateId})}">編集</a>
+		</div>
+		<br>
+		<br>
+		<table class="table">
+			<thead>
+			<tr>
+				<th>ID</th>
+				<th>名前</th>
+				<th>枚数</th>
+				<th>メモ</th>
+				<th></th>
+				<th></th>
+			</tr>
+			</thead>
+				<tr th:each="customer : ${customerLists}">
+					<td th:text="*{customer.id}"></td>
+					<td th:text="*{customer.name}"></td>
+					<td th:text="*{customer.number}"></td>
+					<td th:text="*{customer.comment}"></td>
+					<td><a class="btn btn-outline-success"
+						th:href="@{/customer/{id}/edit(id=*{customer.id})}">編集</a></td>
+					<td>
+						<form th:action="@{/customer/{id}(id=*{customer.id})}" th:method="post">
+							<input class="btn btn-outline-danger" type="submit" name="delete" value="削除" />
+						</form>
+					</td>
+				</tr>
+		</table>
+
+
 		<div class="pull-right">
+		<a class="btn btn-primary" href="customerNew.html" th:href="@{/customer/customerNew/{dateId}(dateId=*{dateId})}">新規作成</a>
 			<a class="btn btn-link" href="/liveList">一覧画面へ</a>
 		</div>
 	</div>

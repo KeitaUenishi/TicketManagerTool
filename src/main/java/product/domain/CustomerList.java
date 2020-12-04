@@ -29,6 +29,6 @@ public class CustomerList {
 	private int number;
 
 	/** 備考 */
-	private String remarks;
+	private String comment;
 
 }

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8" />
+<title>新規登録ページ</title>
+<link rel="stylesheet" href="/css/bootstrap.css" />
+<script src="/js/jquery.js"></script>
+<script src="/js/bootstrap.js"></script>
+</head>
+<body>
+	<div class="container">
+		<h1>取り置きを新規登録</h1>
+
+		<form th:action="@{/customer/customerNew/{dateId}(dateId=*{dateId})}" th:method="post">
+
+			<div class="form-group">
+				<label class="control-label">日付</label> <input id="dateId" class="form-control"
+					type="number" ><!-- th:object="${dateId}" disabled="disabled" th:field="${dateId} /> -->
+			</div>
+			<div class="form-group">
+				<label class="control-label">名前</label> <input class="form-control"
+					type="text" name="name" />
+			</div>
+			<div class="form-group">
+				<label class="control-label">枚数</label> <input class="form-control"
+					type="number" name="number" />
+			</div>
+			<div class="form-group">
+				<label class="control-label">メモ</label> <input class="form-control"
+					type="text" name="comment" />
+			</div>
+			<button class="btn btn-Primary" type="submit">登録</button>
+		</form>
+		<div class="pull-right">
+			<a class="btn btn-link" href="/liveList">一覧画面へ</a>
+		</div>
+	</div>
+</body>
+</html>
