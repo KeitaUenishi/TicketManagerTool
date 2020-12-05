@@ -10,7 +10,7 @@
 			customers_list.id,
 			customers_list.name,
 			customers_list.number,
-			customers_list.remarks
+			customers_list.comment
 		FROM
 			live_list
 		INNER JOIN
@@ -30,7 +30,7 @@
 				<result property="dateId" column="dateId"/>
 				<result property="name" column="name"/>
 				<result property="number" column="number"/>
-				<result property="remarks" column="remarks"/>
+				<result property="comment" column="comment"/>
 			</collection>
 	</resultMap>
 
@@ -57,10 +57,10 @@
 		SELECT * FROM customers_list WHERE id = #{id}
 	</select>
 	<insert id="customerInsert">
-		INSERT INTO customers_list VALUES (#{name}, #{number}, #{remarks})
+		INSERT INTO customers_list VALUES (#{id}, #{dateId}, #{name}, #{number}, #{comment})
 	</insert>
 	<update id="customerUpdate">
-		UPDATE customers_list SET name = #{name}, number = #{number}, remarks = #{remarks} WHERE id = #{id}
+		UPDATE customers_list SET name = #{name}, number = #{number}, comment = #{comment} WHERE id = #{id}
 	</update>
 	<delete id="customerDelete">
 		DELETE FROM customers_list WHERE id = #{id}

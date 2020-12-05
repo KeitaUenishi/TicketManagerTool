@@ -29,7 +29,7 @@ public interface LiveListMapper {
 
 	void customerInsert(CustomerList customerList);
 
-	void liveUpdate(CustomerList customerList);
+	void customerUpdate(CustomerList customerList);
 
 	void customerDelete(Long id);
 

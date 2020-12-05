@@ -14,19 +14,19 @@
 			th:object="${customerList}">
 			<div class="form-group">
 				<label class="control-label">日付</label> <input id="dateId" class="form-control"
-					type="number" ><!-- th:object="${dateId}" disabled="disabled" th:field="${dateId} /> -->
+					type="number" th:field="${customerList.dateId}" disabled="disabled"> <!-- th:object="${dateId}" disabled="disabled" th:field="${dateId} /> -->
 			</div>
 			<div class="form-group">
 				<label class="control-label">名前</label> <input class="form-control"
-					type="text" name="name" />
+					type="text" name="name" th:field="${customerList.name}"/>
 			</div>
 			<div class="form-group">
 				<label class="control-label">枚数</label> <input class="form-control"
-					type="number" name="number" />
+					type="number" name="number" th:field="${customerList.number}"/>
 			</div>
 			<div class="form-group">
 				<label class="control-label">メモ</label> <input class="form-control"
-					type="text" name="comment" />
+					type="text" name="comment" th:field="${customerList.comment}"/>
 			</div>
 			<button class="btn btn-Primary" type="submit">更新</button>
 		</form>

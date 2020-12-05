@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import product.domain.CustomerList;
+import product.domain.LiveList;
 import product.service.CustomerListService;
+import product.service.LiveListService;
 
 /**
  * お客さんのリストを操作するコントローラー
@@ -25,10 +27,14 @@ public class CustomerListController {
 	@Autowired
 	private CustomerListService customerListService;
 
+	@Autowired
+	private LiveListService liveListService;
+
 	// Live日程新規作成画面の表示
 	@GetMapping("/customerNew/{dateId}")
 	public String newCustomerList(@PathVariable Long dateId, Model model) {
-		model.addAttribute("dateId", dateId);
+		LiveList liveList = liveListService.findOne(dateId);
+		model.addAttribute("liveList", liveList);
 		return "customer/customerNew";
 	}
 
