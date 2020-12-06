@@ -15,9 +15,9 @@
 
 			<div class="form-group">
 			<input  class="form-control"
-					type="hidden" name="id" value="0">
-				<label class="control-label">日付</label> <input  class="form-control"
-					type="number" name="dateId" th:value="${dateId}" disabled="disabled"/> <!-- th:object="${dateId}" disabled="disabled" th:field="${dateId}  /customerNew/{dateId}(dateId=*{dateId})/> -->
+					type="hidden" name="id">
+			<input  class="form-control"
+					type="hidden" name="dateId" th:field="${liveList.dateId}" /> <!-- th:object="${dateId}" disabled="disabled" th:field="${dateId}  /customerNew/{dateId}(dateId=*{dateId})/>th:value="${liveList.dateId}" disabled="disabled" -->
 			</div>
 			<div class="form-group">
 				<label class="control-label">名前</label> <input class="form-control"

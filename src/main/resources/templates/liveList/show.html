@@ -34,7 +34,6 @@
 		<table class="table">
 			<thead>
 			<tr>
-				<th>ID</th>
 				<th>名前</th>
 				<th>枚数</th>
 				<th>メモ</th>
@@ -43,7 +42,6 @@
 			</tr>
 			</thead>
 				<tr th:each="customer : ${customerLists}">
-					<td th:text="*{customer.id}"></td>
 					<td th:text="*{customer.name}"></td>
 					<td th:text="*{customer.number}"></td>
 					<td th:text="*{customer.comment}"></td>

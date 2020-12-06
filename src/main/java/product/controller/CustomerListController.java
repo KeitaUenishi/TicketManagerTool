@@ -30,9 +30,9 @@ public class CustomerListController {
 	@Autowired
 	private LiveListService liveListService;
 
-	// Live日程新規作成画面の表示
+	// お客さん情報新規作成画面の表示
 	@GetMapping("/customerNew/{dateId}")
-	public String newCustomerList(@PathVariable Long dateId, Model model) {
+	public String newCustomerList(@PathVariable("dateId") Long dateId, Model model) {
 		LiveList liveList = liveListService.findOne(dateId);
 		model.addAttribute("liveList", liveList);
 		return "customer/customerNew";
@@ -50,7 +50,7 @@ public class CustomerListController {
 	@PostMapping
 	public String customerCreate(@ModelAttribute CustomerList customerList) {
 		customerListService.insert(customerList);
-		return "redirect:/liveList/{dateId}";
+		return "redirect:/liveList";
 	}
 
 	// お客さんデータの更新
