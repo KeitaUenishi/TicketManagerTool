@@ -71,8 +71,15 @@ public class LiveListController {
 	@GetMapping("{dateId}")
 	public String show(@PathVariable Long dateId, Model model) {
 		LiveList liveListChoise = liveListService.selectLiveList(dateId);
-		List<CustomerList> customerLists = liveListChoise.getCustomers();
-		model.addAttribute("customerLists", customerLists);
+
+		// ここでエラー(CustomerListに何もなければnull)
+		try {
+			List<CustomerList> customerLists = liveListChoise.getCustomers();
+			model.addAttribute("customerLists", customerLists);
+		} catch (NullPointerException e) {
+			// TODO: handle exception
+			model.addAttribute("customerLists", null);
+		}
 
 		LiveList liveList = liveListService.findOne(dateId);
 		model.addAttribute("liveList", liveList);

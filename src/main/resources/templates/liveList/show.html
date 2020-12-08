@@ -41,10 +41,11 @@
 				<th></th>
 			</tr>
 			</thead>
+			<tbody th:if="${customerLists != null}">
 				<tr th:each="customer : ${customerLists}">
-					<td th:text="*{customer.name}"></td>
-					<td th:text="*{customer.number}"></td>
-					<td th:text="*{customer.comment}"></td>
+					<td th:text="*{customer.name}">名前</td>
+					<td th:text="*{customer.number}">枚数</td>
+					<td th:text="*{customer.comment}">メモ</td>
 					<td><a class="btn btn-outline-success"
 						th:href="@{/customer/{id}/edit(id=*{customer.id})}">編集</a></td>
 					<td>
@@ -53,6 +54,7 @@
 						</form>
 					</td>
 				</tr>
+			</tbody>
 		</table>
 
 
