@@ -10,10 +10,11 @@
 <body>
 	<div class="container">
 		<h1>Liveを新規登録</h1>
-		<form th:action="@{/liveList}" th:method="post">
+		<form th:action="@{/liveList}" th:method="post" th:object="${liveList}">
 			<div class="form-group">
 				<label class="control-label">日付</label> <input class="form-control" placeholder="20181101"
 					type="number" name="dateId" />
+					<!-- <span class="text-danger" th:if="${#fields.hasErrors('dateId')}" th:errors="*{dateId}"></span>  -->
 			</div>
 			<div class="form-group">
 				<label class="control-label">場所</label> <input class="form-control"

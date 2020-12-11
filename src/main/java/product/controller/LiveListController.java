@@ -2,10 +2,13 @@ package product.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -72,7 +75,7 @@ public class LiveListController {
 	public String show(@PathVariable Long dateId, Model model) {
 		LiveList liveListChoise = liveListService.selectLiveList(dateId);
 
-		// ここでエラー(CustomerListに何もなければnull)
+		// CustomerListに何もなければnull
 		try {
 			List<CustomerList> customerLists = liveListChoise.getCustomers();
 			model.addAttribute("customerLists", customerLists);
@@ -88,7 +91,13 @@ public class LiveListController {
 
 	// Live日程データの保存
 	@PostMapping
-	public String create(@ModelAttribute LiveList liveList) {
+	public String create(@Valid @ModelAttribute LiveList liveList, BindingResult result, Model model) {
+
+		if (result.hasErrors()) {
+			//			model.addAttribute("liveList", liveList);
+			return "/liveList/new";
+		}
+
 		liveListService.insert(liveList);
 		return "redirect:/liveList";
 	}
@@ -108,37 +117,4 @@ public class LiveListController {
 		liveListService.delete(dateId);
 		return "redirect:/liveList";
 	}
-
-	/**
-	 * customer_listの編集
-	 */
-
-	//	// Live日程新規作成画面の表示
-	//	@GetMapping("customerNew")
-	//	public String newCustomerList(Model model) {
-	//		return "redirect:/liveList";
-	//	}
-	//
-	//	// customerデータの保存
-	//	@PostMapping("liveList/customer")
-	//	public String customerCreate(@ModelAttribute CustomerList customerList) {
-	//		customerListService.insert(customerList);
-	//		return "redirect:/liveList/{dateId}";
-	//	}
-	//
-	//	// customerデータの更新
-	//	@GetMapping("/update/{dateId}")
-	//	@Transactional(readOnly = false)
-	//	public String customerUpdate(@PathVariable Long id, @ModelAttribute CustomerList customerList) {
-	//		customerList.setId(id);
-	//		customerListService.update(customerList);
-	//		return "redirect:/liveList";
-	//	}
-	//
-	//	// customerデータの削除
-	//	@PostMapping("/{id}")
-	//	public String customerDelete(@PathVariable Long id) {
-	//		customerListService.delete(id);
-	//		return "redirect:/liveList";
-	//	}
 }

@@ -18,7 +18,7 @@ public class CustomerList {
 	@Size(min = 1, max = 10)
 	private Long dateId;
 
-	/** 会場 */
+	/** 名前 */
 	@NotBlank
 	@Size(min = 1, max = 50)
 	private String name;
