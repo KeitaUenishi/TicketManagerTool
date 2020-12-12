@@ -58,7 +58,8 @@ public class LiveListController {
 
 	// Live日程新規作成画面の表示
 	@GetMapping("new")
-	public String newLiveList(Model model) {
+	public String newLiveList(@ModelAttribute LiveList liveList, Model model) {
+		model.addAttribute("liveList", liveList);
 		return "liveList/new";
 	}
 
@@ -91,13 +92,12 @@ public class LiveListController {
 
 	// Live日程データの保存
 	@PostMapping
-	public String create(@Valid @ModelAttribute LiveList liveList, BindingResult result, Model model) {
+	public String create(@Valid @ModelAttribute LiveList liveList,
+			BindingResult result, Model model) {
 
 		if (result.hasErrors()) {
-			//			model.addAttribute("liveList", liveList);
 			return "/liveList/new";
 		}
-
 		liveListService.insert(liveList);
 		return "redirect:/liveList";
 	}
@@ -105,7 +105,11 @@ public class LiveListController {
 	// Live日程データの更新
 	@GetMapping("/update/{dateId}")
 	@Transactional(readOnly = false)
-	public String update(@PathVariable Long dateId, @ModelAttribute LiveList liveList) {
+	public String update(@PathVariable Long dateId,
+			@Valid @ModelAttribute LiveList liveList, BindingResult result) {
+		if (result.hasErrors()) {
+			return "/liveList/edit";
+		}
 		liveList.setDateId(dateId);
 		liveListService.update(liveList);
 		return "redirect:/liveList";

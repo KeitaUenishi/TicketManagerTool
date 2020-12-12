@@ -1,9 +1,12 @@
 package product.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -32,9 +35,11 @@ public class CustomerListController {
 
 	// お客さん情報新規作成画面の表示
 	@GetMapping("/customerNew/{dateId}")
-	public String newCustomerList(@PathVariable("dateId") Long dateId, Model model) {
+	public String newCustomerList(@PathVariable("dateId") Long dateId, @ModelAttribute CustomerList customerList,
+			Model model) {
 		LiveList liveList = liveListService.findOne(dateId);
 		model.addAttribute("liveList", liveList);
+		model.addAttribute("customerList", customerList);
 		return "customer/customerNew";
 	}
 
@@ -47,8 +52,15 @@ public class CustomerListController {
 	}
 
 	// customerデータの保存
+	// @Valid @ModelAttribute LiveList liveList,b
 	@PostMapping
-	public String customerCreate(@ModelAttribute CustomerList customerList) {
+	public String customerCreate(
+			@Valid @ModelAttribute CustomerList customerList,
+			BindingResult result, Model model) {
+
+		if (result.hasErrors()) {
+			return "/customer/customerNew";
+		}
 		customerListService.insert(customerList);
 		return "redirect:/liveList";
 	}
@@ -57,7 +69,10 @@ public class CustomerListController {
 	@GetMapping("/update/{id}")
 	@Transactional(readOnly = false)
 	public String update(@PathVariable Long id,
-			@ModelAttribute CustomerList customerList) {
+			@Valid @ModelAttribute CustomerList customerList, BindingResult result) {
+		if (result.hasErrors()) {
+			return "/customer/customerEdit";
+		}
 		customerList.setId(id);
 		customerListService.update(customerList);
 		return "redirect:/liveList";

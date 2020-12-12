@@ -11,21 +11,24 @@
 	<div class="container">
 		<h1>取り置きを新規登録</h1>
 
-		<form th:action="@{/customer}" th:method="post" th:object="${liveList}">
-
+		<form th:action="@{/customer}" th:method="post" th:object="${customerList}">
+		<p th:object="${liveList}">
 			<div class="form-group">
 			<input  class="form-control"
 					type="hidden" name="id">
 			<input  class="form-control"
-					type="hidden" name="dateId" th:field="${liveList.dateId}" />
+					type="hidden" name="dateId" th:object="${liveList}" th:field="${liveList.dateId}" />
 			</div>
+			<p/>
 			<div class="form-group">
 				<label class="control-label">名前</label> <input class="form-control"
 					type="text" name="name" />
+					<span class="text-danger" th:if="${#fields.hasErrors('name')}" th:errors="*{customerList.name}"></span>
 			</div>
 			<div class="form-group">
 				<label class="control-label">枚数</label> <input class="form-control"
 					type="number" name="number" />
+					<span class="text-danger" th:if="${#fields.hasErrors('number')}" th:errors="*{customerList.number}"></span>
 			</div>
 			<div class="form-group">
 				<label class="control-label">メモ</label> <input class="form-control"
