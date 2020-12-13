@@ -2,10 +2,9 @@ package product.domain;
 
 import java.util.List;
 
-import javax.validation.constraints.Max;
+import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Null;
 import javax.validation.constraints.Size;
 
 import lombok.Data;
@@ -15,7 +14,7 @@ public class LiveList {
 
 	/** 日付ID */
 	@NotNull
-	@Max(8)
+	@Digits(integer = 8, fraction = 0)
 	private Long dateId;
 
 	/** 会場 */
@@ -27,7 +26,6 @@ public class LiveList {
 	private String remarks;
 
 	/** 子クラス（来場客リスト）の要素定義 */
-	@Null
 	private List<CustomerList> customers;
 
 }

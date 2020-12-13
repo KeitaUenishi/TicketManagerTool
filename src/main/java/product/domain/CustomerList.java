@@ -1,6 +1,8 @@
 package product.domain;
 
+import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import lombok.Data;
@@ -9,13 +11,11 @@ import lombok.Data;
 public class CustomerList {
 
 	/** ID */
-	@NotBlank
-	@Size(min = 1, max = 10)
 	private Long id;
 
 	/** 日付ID */
-	@NotBlank
-	@Size(min = 1, max = 10)
+	@NotNull
+	@Digits(integer = 8, fraction = 0)
 	private Long dateId;
 
 	/** 名前 */
@@ -24,8 +24,7 @@ public class CustomerList {
 	private String name;
 
 	/** 枚数 */
-	@NotBlank
-	@Size(min = 1, max = 5)
+	@NotNull
 	private int number;
 
 	/** 備考 */

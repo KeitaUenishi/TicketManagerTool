@@ -14,11 +14,12 @@
 			<div class="form-group">
 				<label class="control-label">日付</label> <input class="form-control" placeholder="20181101"
 					type="number" name="dateId" />
-					<!-- <span class="text-danger" th:if="${#fields.hasErrors('dateId')}" th:errors="*{dateId}"></span>  -->
+					<span class="text-danger" th:if="${#fields.hasErrors('dateId')}" th:errors="*{dateId}"></span>
 			</div>
 			<div class="form-group">
 				<label class="control-label">場所</label> <input class="form-control"
 					type="text" name="place" />
+					<span class="text-danger" th:if="${#fields.hasErrors('place')}" th:errors="*{place}"></span>
 			</div>
 			<div class="form-group">
 				<label class="control-label">備考</label> <input

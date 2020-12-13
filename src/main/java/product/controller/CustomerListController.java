@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import product.domain.CustomerList;
-import product.domain.LiveList;
 import product.service.CustomerListService;
 import product.service.LiveListService;
 
@@ -37,8 +36,8 @@ public class CustomerListController {
 	@GetMapping("/customerNew/{dateId}")
 	public String newCustomerList(@PathVariable("dateId") Long dateId, @ModelAttribute CustomerList customerList,
 			Model model) {
-		LiveList liveList = liveListService.findOne(dateId);
-		model.addAttribute("liveList", liveList);
+		//LiveList liveList = liveListService.findOne(dateId);
+		//model.addAttribute("liveList", liveList);
 		model.addAttribute("customerList", customerList);
 		return "customer/customerNew";
 	}
@@ -52,13 +51,15 @@ public class CustomerListController {
 	}
 
 	// customerデータの保存
-	// @Valid @ModelAttribute LiveList liveList,b
+	// @Valid @ModelAttribute LiveList liveList,
 	@PostMapping
 	public String customerCreate(
 			@Valid @ModelAttribute CustomerList customerList,
 			BindingResult result, Model model) {
 
 		if (result.hasErrors()) {
+			//			LiveList liveList = liveListService.findOne(dateId);
+			//			model.addAttribute("liveList", liveList);
 			return "/customer/customerNew";
 		}
 		customerListService.insert(customerList);

@@ -13,12 +13,13 @@
 		<form th:action="@{/liveList/update/{dateId}(dateId=*{dateId})}" th:method="get"
 			th:object="${liveList}">
 			<div class="form-group">
-				<label class="control-label">日付</label>
-				<input class="form-control" type="number" th:field="*{dateId}" />
+				<!-- 日付 -->
+				<input class="form-control" type="hidden" th:field="*{dateId}" />
 			</div>
 			<div class="form-group">
 				<label class="control-label">場所</label> <input
 					class="form-control" type="text" th:field="*{place}" />
+					<span class="text-danger" th:if="${#fields.hasErrors('place')}" th:errors="*{place}"></span>
 			</div>
 			<div class="form-group">
 				<label class="control-label">備考</label> <input
