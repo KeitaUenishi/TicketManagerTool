@@ -89,7 +89,8 @@ public class LiveListControllerTest {
 
 	@Test
 	public void newページで新規登録を行うとサービスで処理されてliveList画面に遷移されること() throws Exception {
-		mockMvc.perform(post("/liveList").param("dateId", "20201231").param("place", "テストテスト").param("remarks", "test"))
+		mockMvc.perform(
+				post("/liveList").param("dateId", "20201231").param("place", "テストテスト").param("remarks", "test"))
 				.andExpect(redirectedUrl("/liveList"));
 
 		verify(service, times(1)).insert(any());

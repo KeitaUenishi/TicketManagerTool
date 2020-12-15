@@ -25,6 +25,7 @@
 	<resultMap id="liveListMap" type="product.domain.LiveList">
 		<id property="dateId" column="dateId"/>
 		<result property="place" column="place"/>
+		<result property="remarks" column="remarks"/>
 			<collection property="customers" ofType="product.domain.CustomerList">
 				<result property="id" column="id"/>
 				<result property="dateId" column="dateId"/>

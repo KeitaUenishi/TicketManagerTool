@@ -92,6 +92,7 @@ public class LiveListController {
 
 	// Live日程データの保存
 	@PostMapping
+	@Transactional
 	public String create(@Valid @ModelAttribute LiveList liveList,
 			BindingResult result, Model model) {
 
@@ -117,6 +118,7 @@ public class LiveListController {
 
 	// Live日程データの削除
 	@PostMapping("/{dateId}")
+	@Transactional
 	public String delete(@PathVariable Long dateId) {
 		liveListService.delete(dateId);
 		return "redirect:/liveList";

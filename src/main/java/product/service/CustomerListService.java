@@ -13,7 +13,7 @@ public class CustomerListService {
 	@Autowired
 	LiveListMapper customerListMapper;
 
-	// お客さん情報を1件取得する
+	// customer_listの情報を1件取得する
 	@Transactional
 	public CustomerList findOne(Long id) {
 		return customerListMapper.customerFindOne(id);
