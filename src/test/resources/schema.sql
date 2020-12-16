@@ -1,5 +1,5 @@
 CREATE TABLE IF NOT EXISTS live_list(
-		dateId INT(10) NOT NULL,
+		dateId INT(10) PRIMARY KEY NOT NULL,
 		place VARCHAR(100) NOT NULL ,
 		remarks VARCHAR(200)
 		);
@@ -11,3 +11,4 @@ CREATE TABLE IF NOT EXISTS customers_list(
 		number INT(5) NOT NULL ,
 		comment VARCHAR(200)
 		);
+

@@ -18,7 +18,6 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 import product.service.CustomerListService;
-import product.service.LiveListService;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -29,8 +28,6 @@ public class CustomerListControllerTest {
 
 	@MockBean
 	private CustomerListService service;
-	@MockBean
-	private LiveListService liveservice;
 
 	@Autowired
 	private CustomerListController target;
