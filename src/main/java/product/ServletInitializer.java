@@ -13,7 +13,7 @@ public class ServletInitializer extends SpringBootServletInitializer {
 
 	@Override
 	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-		return application.sources(TicketManegerToolApplication.class);
+		return application.sources(TicketManegerTool2Application.class);
 	}
 
 }
