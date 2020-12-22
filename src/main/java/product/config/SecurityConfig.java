@@ -43,7 +43,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				// フォームベース認証の設定
 				.formLogin()
 				// ログイン成功後のデフォルトページを指定
-				.defaultSuccessUrl("/liveList", true);
+				.defaultSuccessUrl("liveList", true);
 	}
 
 	@Override
