@@ -24,7 +24,6 @@ import product.service.LiveListService;
  * ライブ日程のリストを表示するコントローラー
  * ログイン後始めに表示されるページ
  * @author keita
- *
  */
 
 @Controller
