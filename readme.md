@@ -1,4 +1,5 @@
-# TicketManagementatool チケット管理アプリケーション
+# TicketManagerTool 
+チケット管理アプリケーション
 
 # Overview
 
