@@ -1,10 +1,10 @@
-##TicketManagementatool チケット管理アプリケーション
+# TicketManagementatool チケット管理アプリケーション
 
-#Overview
+# Overview
 
 インディーズバンドとライブハウス間の「チケット共有管理システム」
 
-#Description
+# Description
 
 【目的】
 ライブハウスとインディーズバンド間における来場客数を共有・管理するアプリケーション。
@@ -31,7 +31,7 @@
 
 これらの現状発生する手間をWeb上で管理できるようにすることで、上記の難点を克服できるのではないかと考え作成しました。
 
-#Usage
+# Usage
 
 ・簡易的なログイン機能、ライブ日程の一覧表示
 1/6現在
@@ -41,10 +41,10 @@
 ・各ライブ日程に紐づいた来場客リストの新規登録、更新、削除
 ・基本的なバリデーションチェック
 
-#In development
+# In development
 
 ・ログインアカウントの作成
 ・検索機能、来場者数カウント機能
 
-#Author
+# Author
 Keita Uenishi
