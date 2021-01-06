@@ -1,4 +1,5 @@
-# TicketManagementatool 
+
+# TicketManagerTool 
 チケット管理アプリケーション
 
 # Overview
@@ -48,4 +49,8 @@
 ・検索機能、来場者数カウント機能
 
 # Author
+<<<<<<< HEAD
 Keita Uenishi
+=======
+Keita Uenishi
+>>>>>>> branch 'develop' of https://github.com/KeitaUenishi/TicketManagerTool.git
