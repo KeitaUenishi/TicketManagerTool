@@ -37,7 +37,7 @@ configurations {
 }
 
 bootJar {
-  baseName = "TicketManegerTool"
+  baseName = "TicketManagerTool"
   version =  "0.0.1-SNAPSHOT"
 }
 

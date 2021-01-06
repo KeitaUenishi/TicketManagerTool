@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import product.domain.CustomerList;
 import product.domain.LiveList;
-import product.service.CustomerListService;
 import product.service.LiveListService;
 
 /**
@@ -32,9 +31,6 @@ public class LiveListController {
 
 	@Autowired
 	private LiveListService liveListService;
-
-	@Autowired
-	private CustomerListService customerListService;
 
 	/**
 	 * @param model liveList.htmlへデータを持っていく
@@ -75,7 +71,7 @@ public class LiveListController {
 	public String show(@PathVariable Long dateId, Model model) {
 		LiveList liveListChoise = liveListService.selectLiveList(dateId);
 
-		// CustomerListに何もなければnull
+		// CustomerListに何もなければnullを渡す
 		try {
 			List<CustomerList> customerLists = liveListChoise.getCustomers();
 			model.addAttribute("customerLists", customerLists);
