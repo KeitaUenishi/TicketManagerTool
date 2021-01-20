@@ -5,6 +5,8 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import org.hibernate.validator.constraints.Range;
+
 public class CustomerList {
 
 	/** ID */
@@ -16,12 +18,14 @@ public class CustomerList {
 	private Long dateId;
 
 	/** 名前 */
-	@NotBlank
-	@Size(min = 1, max = 50)
+	@NotBlank(message = "\u540d\u524d\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044")
+	@Size(max = 50, message = "{error.maxSize}\u3067\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044")
 	private String name;
 
 	/** 枚数 */
-	@NotNull
+	@NotNull(message = "\u53d6\u308a\u7f6e\u304d\u679a\u6570\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044")
+	@Range( min = 1, max = 99, 
+	message = "\uff11\u304b\u3089\uff19\uff19\u307e\u3067\u306e\u6570\u5024\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044")
 	private int number;
 
 	/** 備考 */

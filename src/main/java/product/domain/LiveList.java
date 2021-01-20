@@ -10,10 +10,22 @@ import javax.validation.constraints.Size;
 public class LiveList {
 
 	/** 日付ID */
-	@NotNull
-	@Digits(integer = 8, fraction = 0)
+	@NotNull(message = "\u65e5\u4ed8\u60c5\u5831\u3092\uff18\u6841\u3067\u5165\u529b\u3057\u3066\u4e0b\u3055\u3044")
+	@Digits(integer = 8, fraction = 0, 
+	message = "\u65e5\u4ed8\u60c5\u5831\u3092\uff18\u6841\u3067\u5165\u529b\u3057\u3066\u4e0b\u3055\u3044")
 	private Long dateId;
 
+	/** 会場 */
+	@NotBlank(message = "\u5834\u6240\u306e\u60c5\u5831\u3092\u5165\u529b\u3057\u3066\u4e0b\u3055\u3044")
+	@Size(max = 32, message = "{error.maxSize}\u306e\u6587\u5b57\u6570\u3067\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044")
+	private String place;
+	
+	/** 備考 */
+	private String remarks;
+	
+	/** 子クラス（来場客リスト）の要素定義 */
+	private List<CustomerList> customers;
+	
 	public Long getDateId() {
 		return dateId;
 	}
@@ -46,15 +58,5 @@ public class LiveList {
 		this.customers = customers;
 	}
 
-	/** 会場 */
-	@NotBlank
-	@Size(max = 32, message = "{error.maxsize}")
-	private String place;
-
-	/** 備考 */
-	private String remarks;
-
-	/** 子クラス（来場客リスト）の要素定義 */
-	private List<CustomerList> customers;
 
 }

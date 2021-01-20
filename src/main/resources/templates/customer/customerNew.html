@@ -25,7 +25,7 @@
 					<span class="text-danger" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
 			</div>
 			<div class="form-group">
-				<label class="control-label">枚数</label> <input class="form-control"
+				<label class="control-label">枚数</label> <input class="form-control" placeholder="1"
 					type="number" name="number" />
 					<span class="text-danger" th:if="${#fields.hasErrors('number')}" th:errors="*{number}"></span>
 			</div>
@@ -33,7 +33,7 @@
 				<label class="control-label">メモ</label> <input class="form-control"
 					type="text" name="comment" />
 			</div>
-			<button class="btn btn-Primary" type="submit" >登録</button> <!-- th:href="@{/customer/customerNew/{dateId}(dateId=*{dateId})}" -->
+			<button class="btn btn-primary" type="submit" >登録</button> <!-- th:href="@{/customer/customerNew/{dateId}(dateId=*{dateId})}" -->
 		</form>
 		<div class="pull-right">
 			<a class="btn btn-link" href="/liveList">一覧画面へ</a>
